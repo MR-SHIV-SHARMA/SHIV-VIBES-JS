@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ export default function VerifyEmailPage() {
   const [verified, setVerified] = useState(false);
   const [error, setError] = useState(false);
 
-  const verifyUserEmail = async () => {
+  const verifyUserEmail = useCallback(async () => {
     try {
       await axios.post("../api/users/verifyemail", { token });
       setVerified(true);
@@ -18,20 +18,18 @@ export default function VerifyEmailPage() {
       setError(true);
       console.log(error.response);
     }
-  };
+  }, [token]); // Add token as a dependency
 
   useEffect(() => {
-    setError(false);
-    const urlToken = window.location.search.split("=")[1];
+    const urlToken = new URLSearchParams(window.location.search).get("token");
     setToken(urlToken || "");
   }, []);
 
   useEffect(() => {
-    setError(false);
-    if (token.length > 0) {
+    if (token) {
       verifyUserEmail();
     }
-  }, [token]);
+  }, [token, verifyUserEmail]); // Include verifyUserEmail here
 
   return (
     <div className="bg-gray-400 dark:bg-gray-900 flex items-center justify-center min-h-screen">

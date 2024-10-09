@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
 
 export const BackgroundBeams = React.memo(({ className }) => {
@@ -94,3 +93,8 @@ export const BackgroundBeams = React.memo(({ className }) => {
     </div>
   );
 });
+
+// Add display name
+BackgroundBeams.displayName = "BackgroundBeams";
+
+export default BackgroundBeams;

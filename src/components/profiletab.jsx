@@ -9,12 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "./ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
 function TabsDemo() {
   return (
@@ -28,7 +23,8 @@ function TabsDemo() {
           <CardHeader>
             <CardTitle>Account</CardTitle>
             <CardDescription>
-              Make changes to your account here. Click save when you're done.
+              Make changes to your account here. Click save when you&apos;re
+              done.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
@@ -51,7 +47,8 @@ function TabsDemo() {
           <CardHeader>
             <CardTitle>Password</CardTitle>
             <CardDescription>
-              Change your password here. After saving, you'll be logged out.
+              Change your password here. After saving, you&apos;ll be logged
+              out.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">

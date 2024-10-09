@@ -60,7 +60,7 @@ const Profile = () => {
           toast.error("No user ID found.");
         }
       } catch (error) {
-        // toast.error("Error fetching profile or signup data.");
+        // Handle error
       } finally {
         setLoading(false);
       }
@@ -131,9 +131,11 @@ const Profile = () => {
       <div className="w-full flex flex-col lg:flex-row">
         <div className="flex flex-col bg-customBlue items-center lg:min-h-screen px-8 lg:px-16 py-8 lg:pt-10 lg:mb-0">
           {data.profile ? (
-            <img
+            <Image
               src={data.profile}
               alt="Profile Photo"
+              width={300}
+              height={300}
               className="object-cover mb-4 h-[445px] sm:h-[750px] w-96 lg:h-96 sm:w-auto lg:w-64"
             />
           ) : (
@@ -229,7 +231,7 @@ const Profile = () => {
           {isDropdownOpen && (
             <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
               <div className="bg-white text-black p-4 md:p-8 rounded w-full md:w-1/2 max-h-screen overflow-y-auto">
-                <h2 className="text-xl font-semibold mb-4">Edit Product</h2>
+                <h2 className="text-xl font-semibold mb-4">Edit Profile</h2>
                 <form>
                   <div className="mt-4 w-full max-w-full">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
