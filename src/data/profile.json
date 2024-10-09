@@ -1,0 +1,35 @@
+{
+  "profile": "/1704988810024.jpg",
+  "firstName": "Shiv",
+  "lastName": "Sharma",
+  "email": "one@gmail.com",
+  "phone": "123-456-7890",
+  "city": "New York",
+  "bio": "hey dude",
+  "hobbies": "Web Development",
+  "studentId": "123456789",
+  "isDarkMode": true,
+  "theme": "dark",
+  "genresStyles": "Classical, Jazz, Rock, Pop",
+  "performanceExperience": "Performed as a solo pianist and band member for 5 years.",
+  "achievementsAwards": "Winner of the 2020 National Piano Competition.",
+  "musicEducationHistory": "Winner of the 2020 National Piano Competition.",
+  "socialMediaLinks": [
+    {
+      "icon": "FaInstagram",
+      "url": "https://instagram.com/MR_SHIV_SHARMA_1",
+      "displayText": "MR_SHIV_SHARMA_1"
+    },
+    {
+      "icon": "FaYoutube",
+      "url": "https://youtube.com/@MR_SHIV_SHARMA_1",
+      "displayText": "@MR_SHIV_SHARMA_1"
+    },
+    {
+      "icon": "FaLinkedin",
+      "url": "https://www.linkedin.com/in/shiv-prasad-sharma-490b732a1/",
+      "displayText": "shiv-prasad-sharma"
+    }
+  ],
+  "data": "nothing"
+}

@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "allowJs": true,
+      "skipLibCheck": true,
+      "noEmit": true,
+      "module": "esnext",
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "jsx": "preserve",
+      "strict": false,
+      "isolatedModules": true
+    },
+    "include": [
+      "src/**/*.{js,jsx}",
+      "pages/**/*.{js,jsx}",
+      "components/**/*.{js,jsx}",
+      "helpers/**/*.{js,jsx}",
+      "models/**/*.{js,jsx}",
+      "tailwind.config.js"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  }

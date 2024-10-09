@@ -1,0 +1,174 @@
+[
+  {
+    "status": "Active",
+    "content": {
+      "point1": "The melody is often the most memorable part of a song.",
+      "point2": "Successful melodies typically move in stepwise motion (up or down either a half-step or a whole step) with a few leaps.",
+      "point3": "A high note in a melodic passage that anchors the rest of the melody line.",
+      "point4": "Experiment with different scales and modes to find unique and interesting melodies."
+    },
+    "title": "Compose a Catchy Melody",
+    "imageurl": "https://images.pexels.com/photos/210854/pexels-photo-210854.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "songname": "Someone Like You",
+    "artistname": "Adele",
+    "songurl": "https://youtu.be/hLQl3WQQoQ0?si=v6X6XFYzVRPa9Uyz"
+  },
+  {
+    "status": "Active",
+    "content": {
+      "point1": "Try using a variety of chords—major, minor, dominant, diminished, and augmented—for a more complex and interesting sound.",
+      "point2": "Incorporate chord inversions and extended chords (like 7ths and 9ths) to add richness to your progressions.",
+      "point3": "Use chord substitutions to create unexpected harmonies."
+    },
+    "title": "Use All Types of Chords",
+    "imageurl": "https://images.pexels.com/photos/5331160/pexels-photo-5331160.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "songname": "Let It Be",
+    "artistname": "The Beatles",
+    "songurl": "https://youtu.be/CGj85pVzRJs?si=q2JOei44rexy-2jZ"
+  },
+  {
+    "status": "Active",
+    "content": {
+      "point1": "Many popular songs are memorable due to a funky or syncopated melody or backing track.",
+      "point2": "Experiment with different time signatures and rhythmic patterns.",
+      "point3": "Use percussive elements creatively to enhance the song's groove."
+    },
+    "title": "Create a Memorable Rhythm",
+    "imageurl": "https://images.pexels.com/photos/7502551/pexels-photo-7502551.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "songname": "Uptown Funk",
+    "artistname": "Mark Ronson ft. Bruno Mars",
+    "songurl": "https://youtu.be/7Ya2U8XN_Zw?si=IDukUrDXYpI3oyoL"
+  },
+  {
+    "status": "Active",
+    "content": {
+      "point1": "Riffs can anchor an entire song, like Tom Morello's guitar lines on Rage Against the Machine's 'Bombtrack' or the synth lick on Jay-Z's 'Dirt Off Your Shoulder.'",
+      "point2": "Create a riff that is simple yet distinctive.",
+      "point3": "Use the riff as a motif throughout the song to provide cohesion."
+    },
+    "title": "Build Your Song Around a Riff",
+    "imageurl": "https://images.pexels.com/photos/2118046/pexels-photo-2118046.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "songname": "Smoke on the Water",
+    "artistname": "Deep Purple",
+    "songurl": "https://youtu.be/Q2FzZSBD5LE?si=e7j8ntYQalTRF45p"
+  },
+  {
+    "status": "Active",
+    "content": {
+      "point1": "Ensure your music is compelling when played live, not just in recorded form.",
+      "point2": "Consider the arrangement and instrumentation for live performances.",
+      "point3": "Think about audience interaction and how the song will translate on stage."
+    },
+    "title": "Write a Song You Can Play Live",
+    "imageurl": "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "songname": "Bohemian Rhapsody",
+    "artistname": "Queen",
+    "songurl": "https://youtu.be/vbvyNnw8Qjg?si=41hxFYeU7pXqmMTo"
+  },
+  {
+    "status": "Active",
+    "content": {
+      "point1": "Writing melodies and rhythms in your head can help you avoid falling back on familiar tropes.",
+      "point2": "Use different environments to inspire creativity, like going for a walk or visiting a new place.",
+      "point3": "Record your ideas on a voice recorder or smartphone to capture spontaneous moments of inspiration."
+    },
+    "title": "Step Away from Your Instrument to Write",
+    "imageurl": "https://images.pexels.com/photos/1196338/pexels-photo-1196338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "songname": "Blackbird",
+    "artistname": "The Beatles",
+    "songurl": "https://youtu.be/Man4Xw8Xypo?si=3Yhj-5H_MuZUPKox"
+  },
+  {
+    "status": "Active",
+    "content": {
+      "point1": "Include intros, verses, pre-choruses, choruses, bridges, instrumental solos, and outros.",
+      "point2": "Try structures beyond just verses and choruses.",
+      "point3": "Experiment with unconventional song forms to keep listeners engaged."
+    },
+    "title": "Get Ambitious with Song Structure",
+    "imageurl": "https://images.pexels.com/photos/4972600/pexels-photo-4972600.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "songname": "Stairway to Heaven",
+    "artistname": "Led Zeppelin",
+    "songurl": "https://youtu.be/qHFxncb1gRY?si=zUK_iRnmB8hbKveT"
+  },
+  {
+    "status": "Active",
+    "content": {
+      "point1": "Have a plan but leave space for discovery and spontaneity.",
+      "point2": "Be guided by the sound of the words.",
+      "point3": "Use literary devices like metaphors, similes, and alliteration to enhance your lyrics."
+    },
+    "title": "Approach Your Lyric-Writing with Both Structure and Spontaneity",
+    "imageurl": "https://images.pexels.com/photos/7520830/pexels-photo-7520830.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "songname": "Hallelujah",
+    "artistname": "Leonard Cohen",
+    "songurl": "https://youtu.be/YrLk4vdY28Q?si=la-6Js2oOdlNgQ2r"
+  },
+  {
+    "status": "Active",
+    "content": {
+      "point1": "Rhymes make lyrics catchy, cohesive, and easy to memorize, but don't force it if it doesn't fit.",
+      "point2": "Consider different rhyme schemes and patterns to add variety to your lyrics.",
+      "point3": "Use internal rhymes and near rhymes for a more sophisticated sound."
+    },
+    "title": "Use Rhyme as a Tool",
+    "imageurl": "https://images.pexels.com/photos/7521198/pexels-photo-7521198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "songname": "Lose Yourself",
+    "artistname": "Eminem",
+    "songurl": "https://youtu.be/xFYQQPAOz7Y?si=owEm5EyFvrcHUTwP"
+  },
+  {
+    "status": "Active",
+    "content": {
+      "point1": "Change your usual creative process to spark new ideas.",
+      "point2": "Collaborate with other songwriters to gain new perspectives.",
+      "point3": "Take breaks and allow yourself time to recharge and gather inspiration."
+    },
+    "title": "Learn to Break Through Writer's Block",
+    "imageurl": "https://images.pexels.com/photos/4050302/pexels-photo-4050302.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "songname": "Rolling in the Deep",
+    "artistname": "Adele",
+    "songurl": "https://youtu.be/bDtjO-R0QSo?si=ApkXAXDPwbFDlH-X"
+  },
+  {
+    "status": "Active",
+    "content": {
+      "point1": "The process of creating a song, involving writing lyrics and composing music.",
+      "point2": "Lyricists focus on lyrics, while composers focus on melodies.",
+      "point3": "Some songwriters excel in both areas, creating a complete musical piece."
+    },
+    "title": "Songwriting Definition",
+    "imageurl": "https://images.pexels.com/photos/8626375/pexels-photo-8626375.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "songname": "Rolling in the Deep",
+    "artistname": "Adele",
+    "songurl": "https://youtu.be/bDtjO-R0QSo?si=ApkXAXDPwbFDlH-X"
+  },
+  {
+    "status": "Active",
+    "content": {
+      "point1": "Melody: The harmony and rhythm of the song.",
+      "point2": "Lyrics: Words that tell the story or convey the message.",
+      "point3": "Chords: The harmonic structure of the song.",
+      "point4": "Rhythm: The pattern of strong and weak beats."
+    },
+    "title": "Elements of Songwriting",
+    "imageurl": "https://images.pexels.com/photos/3975587/pexels-photo-3975587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "songname": "Imagine",
+    "artistname": "John Lennon",
+    "songurl": "https://example.com/imagine"
+  },
+  {
+    "status": "Active",
+    "content": {
+      "point1": "Storytelling: Telling a story through the lyrics.",
+      "point2": "Emotional Connection: Creating an emotional connection with the listener.",
+      "point3": "Cohesion: Ensuring different elements of the song work together.",
+      "point4": "Originality: Creating something unique and original."
+    },
+    "title": "Songwriting Techniques",
+    "imageurl": "https://images.pexels.com/photos/7096811/pexels-photo-7096811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "songname": "Imagine",
+    "artistname": "John Lennon",
+    "songurl": "https://youtu.be/YkgkThdzX-8?si=M0yqHZsRrO4IIZBz"
+  }
+]
