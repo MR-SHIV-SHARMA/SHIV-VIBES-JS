@@ -298,7 +298,7 @@ const Admin = () => {
     setSearchQuery(e.target.value);
   };
 
-  const productsPerPage = 5;
+  const productsPerPage = 50;
 
   // Toggle action menu visibility
   const handleEllipsisClick = (index) => {
