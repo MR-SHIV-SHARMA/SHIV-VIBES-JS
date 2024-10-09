@@ -141,7 +141,7 @@ const Profile = () => {
           )}
           <div className="text-center">
             <h2 className="text-3xl font-serif font-bold text-black mb-2">
-              {data.firstName.toUpperCase()} {data.lastName}
+              {data.firstName.toUpperCase()} {data.lastName.toUpperCase()}
             </h2>
             <p className="text-gray-900">{data.city}</p>
           </div>
