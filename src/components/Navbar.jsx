@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import { useRouter, usePathname } from "next/navigation";
 import clsx from "clsx";
 import Link from "next/link";
@@ -66,11 +66,13 @@ function Navbar({ className }) {
       try {
         const userId = localStorage.getItem("userId");
         if (userId) {
-          const response = await axios.get(`/api/users/signup?userId=${userId}`);
+          const response = await axios.get(
+            `/api/users/signup?userId=${userId}`
+          );
           setIsLoggedIn(response.data.user.status);
           setIsAdmin(response.data.user.isAdmin);
 
-          if (pathname.startsWith('/Admin')) {
+          if (pathname.startsWith("/Admin")) {
             if (!response.data.user.status) {
               router.push("/login");
             } else if (!response.data.user.isAdmin) {
@@ -80,13 +82,13 @@ function Navbar({ className }) {
         } else {
           setIsLoggedIn(false);
           setIsAdmin(false);
-          if (pathname.startsWith('/Admin')) {
+          if (pathname.startsWith("/Admin")) {
             router.push("/login");
           }
         }
       } catch (error) {
         console.error("Error fetching user status:", error.message);
-        if (pathname.startsWith('/Admin')) {
+        if (pathname.startsWith("/Admin")) {
           router.push("/login");
         }
       }
@@ -122,6 +124,7 @@ function Navbar({ className }) {
         className
       )}
     >
+      <Toaster position="top-right" reverseOrder={false} />
       <Menu setActive={setActive} isDarkMode={isDarkMode}>
         <Link href="/">
           <MenuItem
