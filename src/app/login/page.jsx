@@ -63,7 +63,7 @@ function LoginPage() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-transparent bg-gray-600">
-      <Toaster /> {/* Add Toaster here */}
+      <Toaster position="top-right" reverseOrder={false} />
       <div className="max-w-md w-full mx-auto bg-black rounded-none md:rounded-2xl px-4 shadow-input flex flex-col items-center justify-center md:bg-black border border-gray-300">
         <h2 className="font-bold text-xl mt-4 text-neutral-800 dark:text-neutral-200">
           Welcome to SHIV-WEB
