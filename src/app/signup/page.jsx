@@ -33,7 +33,10 @@ function SignupFormDemo() {
       router.push("/Account_verification_email");
     } catch (error) {
       console.log("Signup failed", error.message);
-      if (error.response && error.response.data.error === "user already exists") {
+      if (
+        error.response &&
+        error.response.data.error === "user already exists"
+      ) {
         toast.error("User already exists", { duration: 15000 });
       } else {
         toast.error(error.message, { duration: 15000 });
@@ -44,19 +47,19 @@ function SignupFormDemo() {
   };
 
   useEffect(() => {
-    setButtonDisabled(
-      !(user.email && user.password && user.username)
-    );
+    setButtonDisabled(!(user.email && user.password && user.username));
   }, [user]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-transparent bg-gray-600">
-      <div className="max-w-md w-full mx-auto p-4 rounded-none md:rounded-2xl shadow-input bg-gray-600 dark:bg-black flex flex-col items-center justify-center min-h-screen">
+      <div className="max-w-md w-full mx-auto p-4 rounded-none md:rounded-2xl shadow-input bg-gray-600 dark:bg-black flex flex-col items-center justify-center min-h sm:border-2 border-gray-300">
         <Toaster position="top-right" reverseOrder={false} />
         <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
           Welcome to SHIV-WEB
         </h2>
-        <h1 className="py-2 text-neutral-200">{loading ? "Processing" : "Signup"}</h1>
+        <h1 className="py-2 text-neutral-200">
+          {loading ? "Processing" : "Signup"}
+        </h1>
 
         <form onSubmit={onSignup}>
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
@@ -65,7 +68,9 @@ function SignupFormDemo() {
               <Input
                 id="firstname"
                 value={user.firstname}
-                onChange={(e) => setUser({ ...user, firstname: e.target.value })}
+                onChange={(e) =>
+                  setUser({ ...user, firstname: e.target.value })
+                }
                 placeholder="Shiv"
                 type="text"
               />
@@ -143,12 +148,12 @@ function SignupFormDemo() {
 
           <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
 
-          <div className="flex flex-col space-y-4">
+          {/* <div className="flex flex-col space-y-4">
             <button
               className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
               type="button"
             >
-              {/* <IconBrandGithub className="h-4 w-4 text-neutral-800 dark:text-neutral-300" /> */}
+              <IconBrandGithub className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
               <span className="text-neutral-700 dark:text-neutral-300 text-sm">GitHub</span>
               <BottomGradient />
             </button>
@@ -156,7 +161,7 @@ function SignupFormDemo() {
               className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
               type="button"
             >
-              {/* <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" /> */}
+              <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
               <span className="text-neutral-700 dark:text-neutral-300 text-sm">Google</span>
               <BottomGradient />
             </button>
@@ -164,11 +169,11 @@ function SignupFormDemo() {
               className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
               type="button"
             >
-              {/* <IconBrandOnlyfans className="h-4 w-4 text-neutral-800 dark:text-neutral-300" /> */}
+              <IconBrandOnlyfans className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
               <span className="text-neutral-700 dark:text-neutral-300 text-sm">OnlyFans</span>
               <BottomGradient />
             </button>
-          </div>
+          </div> */}
         </form>
       </div>
     </div>

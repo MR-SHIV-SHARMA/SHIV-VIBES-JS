@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
 import { Label } from "../../components/ui/label";
 import { Input } from "../../components/ui/input";
@@ -63,7 +63,8 @@ function LoginPage() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-transparent bg-gray-600">
-      <div className="max-w-md w-full mx-auto bg-black rounded-none md:rounded-2xl p-4 md:p-8 shadow-input flex flex-col items-center justify-center md:bg-black">
+      <Toaster /> {/* Add Toaster here */}
+      <div className="max-w-md w-full mx-auto bg-black rounded-none md:rounded-2xl px-4 shadow-input flex flex-col items-center justify-center md:bg-black border border-gray-300">
         <h2 className="font-bold text-xl mt-4 text-neutral-800 dark:text-neutral-200">
           Welcome to SHIV-WEB
         </h2>
@@ -74,39 +75,52 @@ function LoginPage() {
           <p className="text-red-500 text-sm mt-2">{errorMessage}</p>
         )}
 
-        <form className="my-8" onSubmit={onLogin}>
-          <LabelInputContainer className="mb-4">
-            <Label htmlFor="identifier">Email or Username</Label>
-            <Input
-              id="identifier"
-              value={user.identifier}
-              onChange={(e) => setUser({ ...user, identifier: e.target.value })}
-              placeholder="Email or Username"
-              type="text"
-              className="dark:text-white"
-            />
-          </LabelInputContainer>
+        {/* Login credentials message */}
+        <h1 className="text-xl font-bold mb-4 text-center">
+          Please log in using the following credentials:
+        </h1>
+        <p className="text-center">
+          Email: <strong className="text-blue-500">one@gmail.com</strong>
+        </p>
+        <p className="text-center mb-4">
+          Password: <strong className="text-red-500">123456</strong>
+        </p>
 
-          <LabelInputContainer className="mb-4 relative">
-            <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
-              value={user.password}
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
-              placeholder="••••••••"
-              type={showPassword ? "text" : "password"} // Toggle between text and password
-              className="dark:text-white pr-10" // Add padding to the right for the icon
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 text-gray-500 transform -translate-y-1/2" // Position the icon
-            >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}{" "}
-              {/* Toggle the icon */}
-            </button>
-          </LabelInputContainer>
-
+        <form className="my-8 w-full" onSubmit={onLogin}>
+          <div className="sm:flex gap-2">
+            <LabelInputContainer className="mb-4 w-full">
+              <Label htmlFor="identifier">Email or Username</Label>
+              <Input
+                id="identifier"
+                value={user.identifier}
+                onChange={(e) =>
+                  setUser({ ...user, identifier: e.target.value })
+                }
+                placeholder="Email or Username"
+                type="text"
+                className="dark:text-white w-full"
+              />
+            </LabelInputContainer>
+            <LabelInputContainer className="mb-4 w-full relative">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                value={user.password}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                placeholder="••••••••"
+                type={showPassword ? "text" : "password"} // Toggle between text and password
+                className="dark:text-white pr-10 w-full" // Add padding to the right for the icon
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 text-gray-500 transform -translate-y-1/2" // Position the icon
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}{" "}
+                {/* Toggle the icon */}
+              </button>
+            </LabelInputContainer>
+          </div>
           <button
             className="bg-gradient-to-br relative group/btn from-black to-neutral-600 block dark:bg-gray-700 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--gray-800)_inset,0px_-1px_0px_0px_var(--gray-800)_inset]"
             type="submit"
@@ -115,7 +129,6 @@ function LoginPage() {
             {loading ? "Loading..." : "Login"}
             <BottomGradient />
           </button>
-
           <Link className="text-gray-900 dark:text-white" href="/signup">
             <h1 className="mt-2">
               Create a{" "}
@@ -123,6 +136,7 @@ function LoginPage() {
               Account
             </h1>
           </Link>
+          <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-4 h-[1px] w-full" />
         </form>
       </div>
     </div>
