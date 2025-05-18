@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import Section from "../../../../models/Admin/SectionModel";
 import { connect } from "../../../../dbConfig/dbConfig";
-import { client, connectRedis } from "../../../../client"; // Import Redis client utilities
 
 // Helper function to handle JSON responses
 const jsonResponse = (success, data, status) =>
@@ -19,7 +18,6 @@ async function parseJsonBody(request) {
 
 export async function POST(request) {
   await connect(); // Ensure database is connected
-  await connectRedis(); // Ensure Redis is connected
 
   try {
     const body = await parseJsonBody(request);
@@ -28,19 +26,19 @@ export async function POST(request) {
     const sectionsData = Array.isArray(body) ? body : [body];
 
     const savedSections = [];
-    
+
     for (const sectionData of sectionsData) {
       const { title, status, imageurl, songname, artistname, songurl, content } = sectionData;
 
       // Collect missing fields
       const missingFields = [];
-      if (!title) missingFields.push('title');
-      if (!status) missingFields.push('status');
-      if (!imageurl) missingFields.push('imageurl');
-      if (!songname) missingFields.push('songname');
-      if (!artistname) missingFields.push('artistname');
-      if (!songurl) missingFields.push('songurl');
-      if (!content) missingFields.push('content');
+      if (!title) missingFields.push("title");
+      if (!status) missingFields.push("status");
+      if (!imageurl) missingFields.push("imageurl");
+      if (!songname) missingFields.push("songname");
+      if (!artistname) missingFields.push("artistname");
+      if (!songurl) missingFields.push("songurl");
+      if (!content) missingFields.push("content");
 
       if (missingFields.length > 0) {
         return jsonResponse(false, { error: "Missing required fields", missingFields }, 400);
@@ -58,7 +56,6 @@ export async function POST(request) {
 
       const savedSection = await newSection.save();
       savedSections.push(savedSection);
-      await client.set(`section:${savedSection._id}`, JSON.stringify(savedSection)); // Cache the saved section
     }
 
     return jsonResponse(true, { data: savedSections }, 201);
@@ -68,32 +65,18 @@ export async function POST(request) {
   }
 }
 
-
-
-
 export async function GET(request) {
   await connect(); // Ensure database is connected
-  await connectRedis(); // Ensure Redis is connected
 
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
 
     if (id) {
-      // Check Redis cache first
-      const cachedSection = await client.get(`section:${id}`);
-      if (cachedSection) {
-        return jsonResponse(true, { data: JSON.parse(cachedSection) }, 200);
-      }
-
       const section = await Section.findById(id);
       if (!section) {
         return jsonResponse(false, { error: "Section not found" }, 404);
       }
-
-      // Cache the fetched section in Redis
-      await client.set(`section:${id}`, JSON.stringify(section));
-
       return jsonResponse(true, { data: section }, 200);
     } else {
       const sections = await Section.find();
@@ -107,7 +90,6 @@ export async function GET(request) {
 
 export async function DELETE(request) {
   await connect(); // Ensure database is connected
-  await connectRedis(); // Ensure Redis is connected
 
   try {
     const { searchParams } = new URL(request.url);
@@ -122,9 +104,6 @@ export async function DELETE(request) {
       return jsonResponse(false, { error: "Section not found" }, 404);
     }
 
-    // Remove the section from Redis cache
-    await client.del(`section:${id}`);
-
     return jsonResponse(true, { message: "Section deleted successfully" }, 200);
   } catch (error) {
     console.error("Error in DELETE request:", error);
@@ -134,7 +113,6 @@ export async function DELETE(request) {
 
 export async function PUT(request) {
   await connect(); // Ensure database is connected
-  await connectRedis(); // Ensure Redis is connected
 
   try {
     const { searchParams } = new URL(request.url);
@@ -145,19 +123,9 @@ export async function PUT(request) {
     }
 
     const body = await parseJsonBody(request);
+    const { title, status, content, imageurl, songname, artistname, songurl } = body;
 
-    const { title, status, content, imageurl, songname, artistname, songurl } =
-      body;
-
-    if (
-      !title &&
-      !status &&
-      !content &&
-      !imageurl &&
-      !songname &&
-      !artistname &&
-      !songurl
-    ) {
+    if (!title && !status && !content && !imageurl && !songname && !artistname && !songurl) {
       return jsonResponse(false, { error: "Missing fields to update" }, 400);
     }
 
@@ -170,9 +138,6 @@ export async function PUT(request) {
     if (!updatedSection) {
       return jsonResponse(false, { error: "Section not found" }, 404);
     }
-
-    // Update the Redis cache with the updated section
-    await client.set(`section:${id}`, JSON.stringify(updatedSection));
 
     return jsonResponse(
       true,
