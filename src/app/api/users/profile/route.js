@@ -2,35 +2,6 @@ import { NextResponse } from "next/server";
 import { connect } from "../../../../dbConfig/dbConfig"; // Ensure this correctly sets up Mongoose connection
 import User from "../../../../models/users/user.models";
 import Profile from "../../../../models/users/profile_models";
-import { client as redisClient, connectRedis } from "../../../../client"; // Import Redis client utilities
-
-const CACHE_KEY = {
-  PROFILE: (id) => `profile:${id}`,
-};
-
-// Ensure Redis client is connected
-async function ensureRedisConnection() {
-  if (!redisClient.isOpen) {
-    try {
-      await connectRedis();
-    } catch (error) {
-      console.error("Error connecting to Redis:", error);
-      throw new Error("Redis connection failed");
-    }
-  }
-}
-
-// Fetch data from cache
-async function fetchProfileFromCache(id) {
-  try {
-    await ensureRedisConnection(); // Ensure Redis is connected
-    const cacheValue = await redisClient.get(CACHE_KEY.PROFILE(id));
-    return cacheValue ? JSON.parse(cacheValue) : null;
-  } catch (error) {
-    console.error("Error fetching profile from cache:", error);
-    return null;
-  }
-}
 
 export async function POST(request) {
   await connect(); // Connect to the database
@@ -55,7 +26,6 @@ export async function POST(request) {
       bio,
     } = body;
 
-    // Check required fields
     if (!userId) {
       return NextResponse.json(
         { success: false, error: "userId is required" },
@@ -71,7 +41,6 @@ export async function POST(request) {
       );
     }
 
-    // Create a new profile with the provided data
     const newProfile = new Profile({
       userId: user._id,
       username: user.username,
@@ -98,7 +67,6 @@ export async function POST(request) {
       await newProfile.save(); // Save the new profile to the database
     } catch (error) {
       if (error.code === 11000) {
-        // Duplicate key error code
         return NextResponse.json(
           { success: false, error: "Username or email already exists" },
           { status: 400 }
@@ -106,13 +74,6 @@ export async function POST(request) {
       }
       throw error;
     }
-
-    // Cache the new profile in Redis
-    await ensureRedisConnection(); // Ensure Redis is connected
-    await redisClient.set(
-      CACHE_KEY.PROFILE(user._id.toString()),
-      JSON.stringify(newProfile)
-    );
 
     return NextResponse.json(
       { success: true, data: newProfile },
@@ -152,7 +113,6 @@ export async function PUT(request) {
       bio,
     } = body;
 
-    // Check required fields
     if (!userId) {
       return NextResponse.json(
         { success: false, error: "Missing required fields" },
@@ -160,7 +120,6 @@ export async function PUT(request) {
       );
     }
 
-    // Find user by ID
     const user = await User.findById(userId);
     if (!user) {
       return NextResponse.json(
@@ -169,7 +128,6 @@ export async function PUT(request) {
       );
     }
 
-    // Find and update the existing profile by user ID
     const updatedProfile = await Profile.findOneAndUpdate(
       { userId: user._id },
       {
@@ -190,7 +148,7 @@ export async function PUT(request) {
         SocialMediaLinkForLinkdin,
         bio,
       },
-      { new: true, runValidators: true } // Return the updated document
+      { new: true, runValidators: true }
     );
 
     if (!updatedProfile) {
@@ -199,13 +157,6 @@ export async function PUT(request) {
         { status: 404 }
       );
     }
-
-    // Cache the updated profile in Redis
-    await ensureRedisConnection(); // Ensure Redis is connected
-    await redisClient.set(
-      CACHE_KEY.PROFILE(user._id.toString()),
-      JSON.stringify(updatedProfile)
-    );
 
     return NextResponse.json(
       {
@@ -239,18 +190,6 @@ export async function GET(req) {
       );
     }
 
-    // Try to get the profile from Redis cache
-    await ensureRedisConnection(); // Ensure Redis is connected
-    const cachedProfile = await redisClient.get(CACHE_KEY.PROFILE(userId));
-    if (cachedProfile) {
-      console.log("Profile retrieved from cache");
-      return NextResponse.json({
-        success: true,
-        data: JSON.parse(cachedProfile),
-      });
-    }
-
-    // If not in cache, fetch from the database
     const user = await User.findById(userId);
     if (!user) {
       return NextResponse.json(
@@ -267,13 +206,7 @@ export async function GET(req) {
       );
     }
 
-    const profileData = profile.toObject(); // Convert profile to plain object
-
-    // Cache the retrieved profile
-    await redisClient.set(
-      CACHE_KEY.PROFILE(userId),
-      JSON.stringify(profileData)
-    );
+    const profileData = profile.toObject();
 
     console.log("Profile retrieved successfully");
     return NextResponse.json({ success: true, data: profileData });
